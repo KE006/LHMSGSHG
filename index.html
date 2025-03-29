@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Horror Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            font-family: 'Courier New', monospace;
+        }
+        canvas {
+            width: 100%;
+            height: 100%;
+        }
+        #gameUI {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: #ff0000;
+            font-size: 18px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            z-index: 100;
+        }
+        #startScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #ff0000;
+            z-index: 1000;
+        }
+        #startButton {
+            padding: 15px 30px;
+            font-size: 24px;
+            background: #ff0000;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            margin-top: 20px;
+        }
+        #startButton:hover {
+            background: #cc0000;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="startScreen">
+        <h1>Horror Maze</h1>
+        <p>Find 3 keys to escape while avoiding the monster.</p>
+        <p>WASD to move, Mouse to look, F for flashlight</p>
+        <p>Watch your battery level and collect batteries to survive!</p>
+        <button id="startButton">Click to Start</button>
+    </div>
+    <div id="gameUI" class="hidden">
+        <div id="health">Health: 100</div>
+        <div id="flashlight">Flashlight: ON (100%) | Batteries: 3</div>
+    </div>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js"
+            }
+        }
+    </script>
+    <script type="module" src="game.js"></script>
+    <script>
+        document.getElementById('startButton').addEventListener('click', function() {
+            document.getElementById('startScreen').classList.add('hidden');
+            document.getElementById('gameUI').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html> 
